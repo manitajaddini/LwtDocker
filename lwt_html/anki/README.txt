@@ -1,12 +1,21 @@
-Learning with Texts (LWT) is a tool for Language Learning.
+About the Anki template decks
 
-PLEASE READ MORE ... 
-Either open ... info.htm (within the distribution)
-or     open ... https://learning-with-texts.sourceforge.io
+===============================================================
 
-MOST UP-TO-DATE INSTALLATION INSTRUCTIONS can be found online: 
-https://learning-with-texts.sourceforge.io/LWT_INSTALLATION.txt
-_____________________________________________________________
+LWT.anki is an Anki deck that can be opened with Anki 
+Version 1. Anki Export files from LWT can be imported as text
+files (TAB-delimited, UTF-8, with HTML) into that deck.
+
+LWT.apkg is an Anki package that can be imported into Anki 
+Version 2. Anki Export files from LWT can be imported as text 
+files (TAB-delimited, UTF-8, with HTML) into that deck.
+
+===============================================================
+
+Anki can be downloaded here:
+http://ankisrs.net/
+
+===============================================================
 
 "Learning with Texts" (LWT) is free and unencumbered software 
 released into the PUBLIC DOMAIN.
@@ -35,4 +44,5 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 For more information, please refer to [http://unlicense.org/].
-_____________________________________________________________
+
+===============================================================

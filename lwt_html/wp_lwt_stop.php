@@ -1,13 +1,6 @@
-Learning with Texts (LWT) is a tool for Language Learning.
+<?php
 
-PLEASE READ MORE ... 
-Either open ... info.htm (within the distribution)
-or     open ... https://learning-with-texts.sourceforge.io
-
-MOST UP-TO-DATE INSTALLATION INSTRUCTIONS can be found online: 
-https://learning-with-texts.sourceforge.io/LWT_INSTALLATION.txt
-_____________________________________________________________
-
+/**************************************************************
 "Learning with Texts" (LWT) is free and unencumbered software 
 released into the PUBLIC DOMAIN.
 
@@ -35,4 +28,21 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 For more information, please refer to [http://unlicense.org/].
-_____________________________________________________________
+***************************************************************/
+
+/**************************************************************
+wp_lwt_stop.php
+---------------
+To properly log out from both WordPress and LWT, use:
+http://...path-to-wp-blog.../lwt/wp_lwt_stop.php
+(such a link is also provided on the LWT home page 'index.php')
+***************************************************************/
+
+require_once( '../wp-load.php' );
+
+wp_logout();
+setcookie('LWT-WP-User', $wpuser, time() - 1000, '/');
+header("Location: ../wp-login.php?redirect_to=./lwt/wp_lwt_start.php");
+exit;
+
+?>

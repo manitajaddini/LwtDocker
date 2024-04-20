@@ -1,13 +1,6 @@
-Learning with Texts (LWT) is a tool for Language Learning.
+<?php
 
-PLEASE READ MORE ... 
-Either open ... info.htm (within the distribution)
-or     open ... https://learning-with-texts.sourceforge.io
-
-MOST UP-TO-DATE INSTALLATION INSTRUCTIONS can be found online: 
-https://learning-with-texts.sourceforge.io/LWT_INSTALLATION.txt
-_____________________________________________________________
-
+/**************************************************************
 "Learning with Texts" (LWT) is free and unencumbered software 
 released into the PUBLIC DOMAIN.
 
@@ -35,4 +28,39 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 For more information, please refer to [http://unlicense.org/].
-_____________________________________________________________
+***************************************************************/
+
+/**************************************************************
+wp_lwt_start.php
+----------------
+To start LWT (and to login into WordPress), use this URL:
+http://...path-to-wp-blog.../lwt/wp_lwt_start.php
+Cookies must be enabled. A session cookie will be set.
+The lwt installation must be in sub directory "lwt" under
+the WordPress main drectory.
+In the "lwt" directory, "connect.inc.php" must contain 
+           include "wp_logincheck.inc.php"; 
+at the end!
+To properly log out from both WordPress and LWT, use:
+http://...path-to-wp-blog.../lwt/wp_lwt_stop.php
+***************************************************************/
+
+require_once( '../wp-load.php' );
+
+if (is_user_logged_in()){
+	global $current_user;
+
+	get_currentuserinfo();
+	$wpuser = $current_user->ID;
+
+	setcookie('LWT-WP-User', $wpuser, 0, '/');
+	header("Location: ./index.php");
+	exit;
+}
+else { 
+	setcookie('LWT-WP-User', $wpuser, time() - 1000, '/');
+	header("Location: ../wp-login.php?redirect_to=./lwt/wp_lwt_start.php");
+	exit;
+}
+
+?>

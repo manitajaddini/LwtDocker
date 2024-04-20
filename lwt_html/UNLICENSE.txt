@@ -1,6 +1,3 @@
-<?php
-
-/**************************************************************
 "Learning with Texts" (LWT) is free and unencumbered software 
 released into the PUBLIC DOMAIN.
 
@@ -28,16 +25,3 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 For more information, please refer to [http://unlicense.org/].
-***************************************************************/
-
-/**************************************************************
-DB variables for XAMPP
-***************************************************************/
-
-$server = "db";
-//$server = "0.0.0.0";
-$userid = "root";
-$passwd = "root";
-$dbname = "lwt";
-
-?>

@@ -1,13 +1,4 @@
-Learning with Texts (LWT) is a tool for Language Learning.
-
-PLEASE READ MORE ... 
-Either open ... info.htm (within the distribution)
-or     open ... https://learning-with-texts.sourceforge.io
-
-MOST UP-TO-DATE INSTALLATION INSTRUCTIONS can be found online: 
-https://learning-with-texts.sourceforge.io/LWT_INSTALLATION.txt
-_____________________________________________________________
-
+/**************************************************************
 "Learning with Texts" (LWT) is free and unencumbered software 
 released into the PUBLIC DOMAIN.
 
@@ -35,4 +26,37 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 For more information, please refer to [http://unlicense.org/].
-_____________________________________________________________
+***************************************************************/
+
+/**************************************************************
+Check for unsaved changes when unloading window
+***************************************************************/
+
+var DIRTY = 0;
+
+function askConfirmIfDirty(){  
+	if (DIRTY) { 
+		return '** You have unsaved changes! **'; 
+	}
+}
+
+function makeDirty() {
+	DIRTY = 1; 
+}
+
+function resetDirty() {
+	DIRTY = 0; 
+}
+
+function tagChanged(event, ui) {
+	if (! ui.duringInitialization) DIRTY = 1;
+	return true;
+}
+
+$(document).ready( function() {
+	$('#termtags').tagit({afterTagAdded: tagChanged, afterTagRemoved: tagChanged});
+	$('#texttags').tagit({afterTagAdded: tagChanged, afterTagRemoved: tagChanged}); 
+	$('input,checkbox,textarea,radio,select').bind('change',makeDirty);
+	$(':reset,:submit').bind('click',resetDirty);
+	$(window).bind('beforeunload', askConfirmIfDirty);
+} ); 
